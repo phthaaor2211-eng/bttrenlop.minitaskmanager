@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Task Manager</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand-mark" aria-hidden="true">♡</div>
+      <div class="header-copy">
+        <p class="eyebrow">PLAN • FOCUS • FINISH</p>
+        <h1>Mini Task Manager</h1>
+        <p>Không gian nhỏ để sắp xếp những việc quan trọng</p>
+      </div>
+      <div class="header-date">
+        <span class="date-label">NGÀY HÔM NAY</span>
+        <strong id="todayLabel">--/--/----</strong>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="welcome-row">
+      <div>
+        <p class="eyebrow">GÓC LÀM VIỆC CỦA BẠN</p>
+        <h2>Mỗi việc nhỏ đều đáng được hoàn thành.</h2>
+        <p class="muted">Ghi lại công việc, theo dõi tiến độ và dành thời gian cho điều quan trọng.</p>
+      </div>
+      <div class="progress-card">
+        <div class="progress-ring" id="progressRing">
+          <span id="progressPercent">0%</span>
+        </div>
+        <div>
+          <strong>Tiến độ chung</strong>
+          <p id="progressText">0 trên 0 công việc</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-grid" aria-label="Thống kê công việc">
+      <article class="stat-card stat-total">
+        <span class="stat-icon">▤</span>
+        <p>Tổng công việc</p>
+        <strong id="totalCount">0</strong>
+      </article>
+      <article class="stat-card stat-pending">
+        <span class="stat-icon">◷</span>
+        <p>Chưa hoàn thành</p>
+        <strong id="pendingCount">0</strong>
+      </article>
+      <article class="stat-card stat-done">
+        <span class="stat-icon">✓</span>
+        <p>Đã hoàn thành</p>
+        <strong id="doneCount">0</strong>
+      </article>
+      <article class="stat-card stat-overdue">
+        <span class="stat-icon">!</span>
+        <p>Quá hạn</p>
+        <strong id="overdueCount">0</strong>
+      </article>
+    </section>
+
+    <div class="content-grid">
+      <section class="panel form-panel">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">BẮT ĐẦU TỪ ĐÂY</p>
+            <h2>Thêm công việc</h2>
+          </div>
+          <span class="heading-symbol">＋</span>
+        </div>
+
+        <form id="taskForm" novalidate>
+          <div class="form-group">
+            <label for="taskName">Tên công việc</label>
+            <input type="text" id="taskName" name="title"
+              placeholder="Ví dụ: Ôn tập JavaScript" maxlength="100">
+          </div>
+
+          <div class="form-group">
+            <label for="taskDeadline">Hạn hoàn thành</label>
+            <input type="date" id="taskDeadline" name="dueDate">
+          </div>
+
+          <div class="form-group">
+            <label for="taskPriority">Mức độ ưu tiên</label>
+            <select id="taskPriority" name="priority">
+              <option value="Cao">Cao</option>
+              <option value="Trung bình" selected>Trung bình</option>
+              <option value="Thấp">Thấp</option>
+            </select>
+          </div>
+
+          <p id="errorMessage" class="error-message" role="alert"></p>
+          <button type="submit" class="primary-button">＋ Thêm vào danh sách</button>
+        </form>
+
+        <div class="tip-box">
+          <span aria-hidden="true">✦</span>
+          <p>Mẹo nhỏ: chia công việc lớn thành những việc nhỏ để dễ bắt đầu hơn.</p>
+        </div>
+      </section>
+
+      <section class="panel tasks-panel">
+        <div class="section-heading task-heading">
+          <div>
+            <p class="eyebrow">DANH SÁCH CỦA BẠN</p>
+            <h2>Việc cần làm</h2>
+          </div>
+          <span class="task-count" id="visibleCount">5 mục</span>
+        </div>
+
+        <div class="toolbar">
+          <label class="search-box" for="searchInput">
+            <span aria-hidden="true">⌕</span>
+            <input type="search" id="searchInput" placeholder="Tìm tên công việc...">
+          </label>
+
+          <label class="filter-box" for="statusFilter">
+            <span class="sr-only">Lọc trạng thái</span>
+            <select id="statusFilter">
+              <option value="all">Tất cả trạng thái</option>
+              <option value="pending">Chưa hoàn thành</option>
+              <option value="done">Đã hoàn thành</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="taskList" class="task-list" aria-live="polite"></div>
+        <p id="emptyMessage" class="empty-message" hidden>
+          Không tìm thấy công việc phù hợp. Thử đổi từ khóa hoặc bộ lọc nhé.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>♡ Một ngày hiệu quả bắt đầu từ kế hoạch rõ ràng.</span>
+      <span>Sinh viên: Phạm Phương Thảo &nbsp; | &nbsp; MSSV: 224001750</span>
+    </div>
+  </footer>
+</body>
+</html>
